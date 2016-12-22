@@ -24,3 +24,49 @@ $("#submitBtn").click(function(){
 $(function() {
   $("#draggable").draggable();
 });
+
+$(function(){
+  $("#vertDraggable").draggable({
+    axis: "y"
+  });
+});
+
+$(function(){
+  $("#horiDraggable").draggable({
+    axis: "x"
+  });
+});
+
+$(function(){
+  $("#boxResizeable").resizable({
+    grid:50,
+    resize: function(event, ui){
+      if ($(this).width() > 300) {
+        $("#boxResizeText").html("This box is bigger.");
+      }
+    }
+  });
+});
+
+$(function(){
+  $("#smallDroppable").draggable();
+});
+
+$(function(){
+  $("#bigDroppable").droppable({
+    drop: function(event, ui){
+      $("#droppableText").html("You dropped me");
+    }
+  });
+});
+
+// Accordion function (with headers)
+$(function(){
+  $("#accordion").accordion();
+});
+
+// Sortable list function (draggable list)
+$(function(){
+  $("#sortable").sortable();
+  $("#sortable").disableSelection();
+});

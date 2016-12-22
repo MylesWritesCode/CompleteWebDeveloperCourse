@@ -16,6 +16,23 @@ label {
   display: block;
 }
 
+/*Added styles just to show sortable list*/
+#sortable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 60%;
+}
+
+#sortable li {
+  margin: 0 3px 3px 3px;
+  padding: 0.4em;
+  padding-left: 1.5em;
+  font-size: 1.4em;
+  height: 18px;
+  background-color: gray;
+}
+
 .wrapper {
   width: 100%;
   margin: 20px auto;
@@ -33,4 +50,14 @@ label {
 #errorMessages {
   color: red;
   font-size: 80% !important;
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+}
+
+.large-box {
+  height: 500px;
+  width: 500px;
 }
