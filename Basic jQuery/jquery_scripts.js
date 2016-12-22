@@ -1,4 +1,22 @@
-// // Have the div animate a fade out
+// Regex functions
+var regex = /is/;
+var string = "Regex is great!";
+var result = string.match(regex);
+console.log(result);
+
+// Case insenitive
+var regex = /is/i
+var string = "Regex is great!";
+var result = string.match(regex);
+console.log(result);
+
+//How many times does is appear?
+var regex = /e/g;
+var string = "Regex is great!";
+var result = string.match(regex);
+console.log(result);
+
+// Have the div animate a fade out
 $("div").click(function(){
   $(this).fadeOut("slow", function(){
     $("#eventAlert").html($(this).attr("class") + " fade out has finished.");
