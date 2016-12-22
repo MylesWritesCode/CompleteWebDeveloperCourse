@@ -1,8 +1,4 @@
-// btn-default - leftText
-// btn-success - midText
-// btn-danger - rightText
-
-$(".btn").click(function(){
+$("#changeBtn").click(function(){
   $(this).prop("disabled", true);
 });
 
@@ -16,4 +12,8 @@ $(".btn-success").click(function(){
 
 $(".btn-danger").click(function(){
   $("#rightText").html("You clicked on the red button");
+});
+
+$('#myModal').on("hidden.bs.modal", function(e) {
+
 });
