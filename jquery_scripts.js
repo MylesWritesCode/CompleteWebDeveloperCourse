@@ -1,9 +1,32 @@
 // Have the div animate a fade out
 $("div").click(function(){
   $(this).fadeOut("slow", function(){
-    $("p").html($(this).attr("class") + " fade out has finished.");
+    $("#eventAlert").html($(this).attr("class") + " fade out has finished.");
   });
 });
+
+$("div").click(function(){
+  $("#fadeInText").fadeIn()
+});
+
+// A fade toggle button that will fade the selected once a button is clicked
+$("#toggleButton").click(function(){
+  $("#toggleText").fadeToggle()
+});
+
+// The long way of doing a toggle fade button/text
+// $("toggleButton").click(function(){
+//   var textVisible = true;
+//   if (textVisible) {
+//     $("#textToggle").fadeOut(function(){
+//       textVisible = false;
+//     });
+//   } else {
+//     $("textToggle").fadeIn(function(){
+//       textVisible = true;
+//     });
+//   }
+// });
 
 // Set the text in paragraph when green circle is clicked
 // $(".circle.green").click(function(){

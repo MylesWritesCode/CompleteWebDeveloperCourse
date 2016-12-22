@@ -18,3 +18,7 @@
 .green {
   background-color: green;
 }
+
+#fadeInText {
+  display: none;
+}
