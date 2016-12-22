@@ -20,3 +20,7 @@ $("#submitBtn").click(function(){
   }
   $("#errorMessages").html(errorMessage)
 });
+
+$(function() {
+  $("#draggable").draggable();
+});
