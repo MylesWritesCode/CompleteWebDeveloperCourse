@@ -1,4 +1,7 @@
-$("#changeBtn").click(function(){
+// Scrollspy
+$("body").scrollspy({target: ".navbar", offset: 200});
+
+$(".disable-btn").click(function(){
   $(this).prop("disabled", true);
 });
 
