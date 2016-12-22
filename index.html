@@ -3,9 +3,60 @@
   <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script type="text/javascript" scr="scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="scripts.js"></script> -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Bootstrap Tutorial</title>
   </head>
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <!-- Stuff like buttons go in here -->
+        </div>
+        <a class="navbar-brand" href="#">Boostrap Practice</a>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="well">
+            <p id="leftText">Here is some text that will hold place.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="well">
+            <p id="midText">This text will stay in the middle of these two divs</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="well">
+            <p id="rightText">And lastly, this text will stay here in this well</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="text-center">
+            <button type="button" class="btn btn-default btn-lg">Change Text</button>
+            <button type="button" class="btn btn-success btn-lg">Change Text</button>
+            <button type="button" class="btn btn-danger btn-lg">Change Text</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <form class="form-group">
+            <label for="email">Email Address</label>
+            <input id="email" class="form-control" type="email" placeholder="Email Address">
+            <label for="password">Password</label>
+            <input id="password" class="form-control" type="password" placeholder="Password">
+            <br>
+            <button type="button" class="btn btn-info btn-lg">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="scripts.js"></script>
   </body>
 </html>
