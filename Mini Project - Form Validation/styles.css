@@ -29,3 +29,8 @@ label {
 #submitBtn {
   margin: 10px;
 }
+
+#errorMessages {
+  color: red;
+  font-size: 80% !important;
+}
