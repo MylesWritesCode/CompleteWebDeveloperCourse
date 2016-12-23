@@ -27,7 +27,7 @@ $("#submitBtn").click(function(){
   if (isBlank(danger)) {
     $("#alerts").removeClass("alert-danger");
     $("#alerts").addClass("alert-success");
-    $("#alerts").html("Thank you for your message. We will contact you once we go over it.");
+    $("#alerts").html("Thank you for your message. We will review it and contact you if necessary. Have a great day!");
   } else {
     $("#alerts").removeClass("alert-success");
     $("#alerts").addClass("alert-danger");
