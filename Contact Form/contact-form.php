@@ -42,9 +42,9 @@
             <?php
             // Take data from form
             $emailTo = "contact@contact.us";
-            $subject = $_POST["subject"];
-            $body = $_POST["body"];
-            $headers = "From: ".$_POST["email"];
+            $subject = empty($_POST["subject"]) ? "" : $_POST["subject"];
+            $body = empty($_POST["body"]) ? "" : $_POST["body"];
+            $headers = "From: ".empty($_POST["email"]) ? "" : $_POST["email"];
             // validate?
             // send email using mailer function
             mail($emailTo, $subject, $body, $headers);
