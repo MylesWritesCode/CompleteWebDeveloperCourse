@@ -45,7 +45,19 @@
             $subject = empty($_POST["subject"]) ? "" : $_POST["subject"];
             $body = empty($_POST["body"]) ? "" : $_POST["body"];
             $headers = "From: ".empty($_POST["email"]) ? "" : $_POST["email"];
-            // validate?
+            // validate
+            $error = "";
+            if ($_POST) {
+              if (!$_POST["email"]) {
+                $error .= "<p>Please enter a valid email address.</p>";
+              }
+              if (!$_POST["subject"]) {
+                $error .= "<p>Please enter a valid subject.</p>";
+              }
+              if (!$_POST["body"]) {
+                $error .= "<p>Please fill out the body.</p>";
+              }
+            }
             // send email using mailer function
             mail($emailTo, $subject, $body, $headers);
             ?>
