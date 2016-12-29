@@ -4,6 +4,9 @@
   if (mysqli_connect_error()) {
     die ("There was an error connecting to the database.");
   }
+
+  $query = "INSERT INTO `users` (`email`, `password`) VALUES('eric@example.com', 'password')";
+
   $query = "SELECT * FROM users";
 
   if ($result = mysqli_query($link, $query)) {
