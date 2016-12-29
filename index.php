@@ -1,6 +1,5 @@
 <?php
-  // Connect to SQL db using PHP
-  $link = mysqli_connect("localhost", "randomUserName", "randomPass", "randomUserName");
+include "database.php";
   if (mysqli_connect_error()) {
     die ("There was an error connecting to the database.");
   }
