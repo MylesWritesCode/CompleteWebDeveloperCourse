@@ -18,22 +18,26 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
+          <div class="alert text-center sign-up-form" id="alerts">
+            <!-- Placeholder for messages -->
+          </div>
           <div class="well sign-up-form">
             <form class="form-group">
               <h1 class="text-center">Sign Up Form</h1>
               <br>
               <div class="input-group input-group-lg">
-                <span class="input-group-addon addon-width" id="sizing-addon-1">E-Mail Address</span>
-                <input type="text" name="email" class="form-control" placeholder="joe@example.com">
+                <span class="input-group-addon addon-width" id="emailAddon">E-Mail Address</span>
+                <input type="text" name="email" id="email" class="form-control" placeholder="joe@example.com">
               </div>
               <br>
               <div class="input-group input-group-lg">
-                <span class="input-group-addon addon-width">Password</span>
-                <input type="password" name="password" class="form-control" placeholder="password">
+                <span class="input-group-addon addon-width" id="passwordAddon">Password</span>
+                <input type="password" name="password" id="password" class="form-control" placeholder="password">
               </div>
               <br>
-              <button class="btn btn-primary btn-lg center-block">Submit</button>
+              <button class="btn btn-primary btn-lg center-block" id="submitBtn">Submit</button>
             </form>
+            <script type="text/javascript" src="script.js"></script>
           </div> <!-- well -->
         </div> <!-- col-md-6 col-md-offset-3 -->
       </div> <!-- row -->
