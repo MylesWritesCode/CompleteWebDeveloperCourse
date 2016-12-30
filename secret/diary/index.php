@@ -1,8 +1,5 @@
 <?php
-include ("database.php");
-if (mysqli_connect_error()) {
-  die ("There was an error connecting to the database.");
-}
+include "../database.php";
 // take email and password
 $email = empty($_POST["email"])? "" : $_POST["email"];
 $password = empty($_POST["password"])? "" : $_POST["password"];
@@ -19,36 +16,23 @@ if (!empty($email) && !empty($password)) {
   // if $result rows > 0
   if (mysqli_num_rows($result) > 0) {
     // warning: that email is already registered
-    $message = "<script type='text/javascript'>$('#alerts').removeClass('alert-info').addClass('alert-warning').html('That email address is already in use.'); $('#emailFormGroup').removeClass('has-error').addClass('has-warning');        $('#emailSpan').addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');</script>";
+    $message = "<script type='text/javascript'> $('#alerts').removeClass('alert-info').addClass('alert-warning').html('That email address is already in use.'); $('#emailFormGroup').removeClass('has-error').addClass('has-warning'); $('#emailSpan').addClass('glyphicon-warning-sign').removeClass('glyphicon-ok'); </script>";
   } else {
     // add user with password to db
     $query = "INSERT INTO `users` (`email`, `password`) VALUES ('$email', '$password')";
     mysqli_query($link, $query);
-    $message = "<script type='text/javascript'>$('#alerts').removeClass('alert-info alert-warning').addClass('alert-success').html('Submitted!');</script>";
+    echo $query;
+    $message = "<script type='text/javascript'> $('#alerts').removeClass('alert-info alert-warning').addClass('alert-success').html('Submitted!'); </script>";
   }
 } else {
-  $message = "<script type='text/javascript'>$('#alerts').removeClass('alert-warning alert-error alert-success').addClass('alert-info').html('Fill out the form and click Sign Up!')</script>";
+  $message = "<script type='text/javascript'> $('#alerts').removeClass('alert-warning alert-error alert-success').addClass('alert-info').html('Fill out the form and click Sign Up!') </script>";
 }
 ?>
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
-    <title>Sessions</title>
-  </head>
+<?php include "../header.html"; ?>
   <body>
-    <nav class="nav navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="row">
-          <a class="navbar-brand" href="#">Secret Diary</a>
-        </div> <!-- row -->
-      </div> <!-- container-fluid -->
-    </nav>
+    <?php include "../navbar.html"; ?>
     <div id="background-overlay">
       <div class="container">
         <div class="row">
@@ -77,7 +61,7 @@ if (!empty($email) && !empty($password)) {
                   </label>
                 </div> <!-- checkbox -->
                 <div class="alert text-center notices" id="alerts">
-                  <?php echo $message ?>
+                  <?php echo $message; ?>
                 </div>
                 <button class="btn btn-success btn-lg center-block" id="submitBtn">Sign Up</button>
                 <br>
