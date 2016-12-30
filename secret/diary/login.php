@@ -1,6 +1,15 @@
 <?php
 session_start();
 include "../database.php";
+// Check if a cookie exists
+if ($_COOKIE['id']) {
+  // Set session id to whatever the cookie id is (really easy way to start a session)
+  $_SESSION['id'] = $_COOKIE['id'];
+}
+// Check if a session exists
+if ($_SESSION['id']) {
+  // Some code in to show that the person is logged in (ie. Logged In! text)
+}
 // take email and password
 $email = empty($_POST["email"])? "" : $_POST["email"];
 $password = empty($_POST["password"])? "" : $_POST["password"];
@@ -10,7 +19,6 @@ if (!empty($email) && !empty($password)) {
   // mysqli_real_escape_string vars
   $email = mysqli_real_escape_string($link, $email);
   $password = mysqli_real_escape_string($link, $password);
-  $password = password_hash(mysqli_real_escape_string($link, $password), PASSWORD_BCRYPT);
   // query db for $email, set to $query
   $query = "SELECT `id` FROM `users` WHERE `email` = '".$email."'";
   // store results of query in $result
@@ -23,12 +31,8 @@ if (!empty($email) && !empty($password)) {
     // add user with password to db
     $query = "INSERT INTO `users` (`email`, `password`) VALUES ('$email', '$password')";
     mysqli_query($link, $query);
+    echo $query;
     $message = "<script type='text/javascript'> $('#alerts').removeClass('alert-info alert-warning').addClass('alert-success').html('Submitted!'); </script>";
-    // session cookie
-    $_SESSION['id'] = mysqli_insert_id($link);
-    if ($_POST['stayLoggedIn'] == 1) {
-      setcookie("id", mysqli_insert_id($link), time() + 604800;
-    }
   }
 } else {
   $message = "<script type='text/javascript'> $('#alerts').removeClass('alert-warning alert-error alert-success').addClass('alert-info').html('Fill out the form and click Sign Up!') </script>";
@@ -62,7 +66,7 @@ if (!empty($email) && !empty($password)) {
                 </div>
                 <div class="checkbox">
                   <label class="checkbox-text">
-                    <input type="checkbox" id="stayLoggedIn" name="stayLoggedIn" value="option1">
+                    <input type="checkbox" id="stayLoggedIn" value="option1">
                     &nbsp Stay logged in
                   </label>
                 </div> <!-- checkbox -->
@@ -71,7 +75,7 @@ if (!empty($email) && !empty($password)) {
                 </div>
                 <button class="btn btn-success btn-lg center-block" id="submitBtn">Sign Up</button>
                 <br>
-                <a href="login.php">Log In</a>
+                <a href="#">Log In</a>
               </form>
             </div> <!-- well sign-in-form -->
           </div> <!-- col-md-6 col-md-offset-3 -->
