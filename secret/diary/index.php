@@ -27,8 +27,10 @@ if (!empty($email) && !empty($password)) {
     // session cookie
     $_SESSION['id'] = mysqli_insert_id($link);
     if ($_POST['stayLoggedIn'] == 1) {
-      setcookie("id", mysqli_insert_id($link), time() + 604800;
+      setcookie("id", mysqli_insert_id($link), time() + 604800);
     }
+    // redirect to login page
+    header("Location: login.php");
   }
 } else {
   $message = "<script type='text/javascript'> $('#alerts').removeClass('alert-warning alert-error alert-success').addClass('alert-info').html('Fill out the form and click Sign Up!') </script>";
@@ -36,9 +38,9 @@ if (!empty($email) && !empty($password)) {
 ?>
 <!DOCTYPE html>
 <html>
-<?php include "../header.html"; ?>
+<?php include "../header.php"; ?>
   <body>
-    <?php include "../navbar.html"; ?>
+    <?php include "../navbar.php"; ?>
     <div id="background-overlay">
       <div class="container">
         <div class="row">

@@ -5,7 +5,7 @@
     <?php include "../navbar.html"; ?>
     <div class="container-fluid">
       <div class="row">
-        <?php include "../sidebar.html" ?>
+        <?php include "../sidebar.html"; ?>
         <div class="col-sm-6 col-sm-offset-1 element-ui">
           <form method="POST" class="form-group">
             <h1 class="text-center">Create Your Post!</h1>
