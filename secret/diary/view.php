@@ -1,5 +1,14 @@
 <?php
+include "../database.php";
 session_start();
+if (array_key_exists("id", $_SESSION)) {
+  // Code to bring up the posts you've created.
+} else {
+  header("Location: login.php");
+}
+
+// Start counting rows in `secrets`
+// find each secret by `id` in table `secret` while `user_id` == `session id`
 ?>
 <!DOCTYPE HTML>
 <html>

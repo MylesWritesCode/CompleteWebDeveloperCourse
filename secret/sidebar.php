@@ -1,12 +1,4 @@
 <?php
-// // Login/Logout
-if (array_key_exists("logout", $_GET)) {
-  unset($_SESSION);
-  setcookie("id", "", time() - 360);
-  $_COOKIE["id"] = "";
-} else if (array_key_exists("id", $_SESSION) || array_key_exists("id", $_COOKIE)) {
-  header("Location: view.php");
-}
 
 ?>
 

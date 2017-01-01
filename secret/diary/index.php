@@ -18,12 +18,12 @@ if (!empty($email) && !empty($password)) {
   // if $result rows > 0
   if (mysqli_num_rows($result) > 0) {
     // warning: that email is already registered
-    $message = "<script type='text/javascript'> $('#alerts').removeClass('alert-info').addClass('alert-warning').html('That email address is already in use.'); $('#emailFormGroup').removeClass('has-error').addClass('has-warning'); $('#emailSpan').addClass('glyphicon-warning-sign').removeClass('glyphicon-ok'); </script>";
+    $message = "$('#alerts').removeClass('alert-info').addClass('alert-warning').html('That email address is already in use.'); $('#emailFormGroup').removeClass('has-error').addClass('has-warning'); $('#emailSpan').addClass('glyphicon-warning-sign').removeClass('glyphicon-ok');";
   } else {
     // add user with password to db
     $query = "INSERT INTO `users` (`email`, `password`) VALUES ('$email', '$password')";
     mysqli_query($link, $query);
-    $message = "<script type='text/javascript'> $('#alerts').removeClass('alert-info alert-warning').addClass('alert-success').html('Submitted!'); </script>";
+    $message = "$('#alerts').removeClass('alert-info alert-warning').addClass('alert-success').html('Submitted!');";
     // session cookie
     $_SESSION['id'] = mysqli_insert_id($link);
     if ($_POST['stayLoggedIn'] == 1) {
@@ -33,7 +33,19 @@ if (!empty($email) && !empty($password)) {
     header("Location: login.php");
   }
 } else {
-  $message = "<script type='text/javascript'> $('#alerts').removeClass('alert-warning alert-error alert-success').addClass('alert-info').html('Fill out the form and click Sign Up!') </script>";
+  $message = "$('#alerts').removeClass('alert-warning alert-error alert-success').addClass('alert-info').html('Fill out the form and click Sign Up!')";
+}
+
+// Login/logout
+if (array_key_exists("logout", $_GET)) {
+  unset($_SESSION);
+  setcookie("id", "", time() - 360);
+  $_COOKIE["id"] = "";
+  $message = "$('#alerts').removeClass('alert-warning alert-error alert-success').addClass('alert-info').html('Logged out successfully!')";
+  session_destroy();
+} else if (array_key_exists("id", $_SESSION) || array_key_exists("id", $_COOKIE)) {
+  // This is causing a lot of redirects. Set them on the page themselves.
+  header("Location: view.php");
 }
 ?>
 <!DOCTYPE html>
@@ -64,12 +76,18 @@ if (!empty($email) && !empty($password)) {
                 </div>
                 <div class="checkbox">
                   <label class="checkbox-text">
-                    <input type="checkbox" id="stayLoggedIn" name="stayLoggedIn" value="option1">
+                    <input type="checkbox" id="stayLoggedIn" name="stayLoggedIn" value="1">
                     &nbsp Stay logged in
                   </label>
                 </div> <!-- checkbox -->
                 <div class="alert text-center notices" id="alerts">
-                  <?php echo $message; ?>
+                  <?php
+                    echo "<script type='text/javascript'>";
+                    echo '$(document).ready(function(){ ';
+                    echo $message;
+                    echo ' });';
+                    echo "</script>";
+                  ?>
                 </div>
                 <button class="btn btn-success btn-lg center-block" id="submitBtn">Sign Up</button>
                 <br>

@@ -38,3 +38,5 @@ $(document).ready(function(){
       return pattern.test(emailAddress);
   };
 });
+
+// create.php Validations

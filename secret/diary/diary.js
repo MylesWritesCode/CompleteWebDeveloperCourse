@@ -1,8 +1,24 @@
 $(document).ready(function(){
-  var href = document.location.href;
-  var lastPathSegment = href.substr(href.lastIndexOf('/') + 1);
-  if (lastPathSegment == "search.php") {
-  // search active
-    $('#viewMenu').removeClass('active'); $('#createMenu').removeClass('active'); $('#logoutMenu').removeClass('active'); $('#searchMenu').addClass('active');
-  }
+  $("#createForm").submit(function(event){
+    event.preventDefault();
+    if ($("#title").val() == "" || $("#secret").val() == "") {
+      if ($("#title").val() == "") {
+        $("#titleFormGroup").addClass("has-error");
+        $("#titleSpan").addClass("glyphicon-remove");
+      } else {
+        $("#titleFormGroup").removeClass("has-error").addClass("has-success");
+        $("#titleSpan").addClass("glyphicon-ok").removeClass("glyphicon-remove");
+      }
+      if ($("#secret").val() == "") {
+        $("#secretFormGroup").addClass("has-error");
+        $("#secretSpan").addClass("glyphicon-remove");
+      } else {
+        $("#secretFormGroup").removeClass("has-error").addClass("has-success");
+        $("#secretSpan").addClass("glyphicon-ok").removeClass("glyphicon-remove");
+      }
+    } else {
+      $("#createForm").unbind('submit').submit();
+    }
+  });
+  console.log("this is new");
 });
