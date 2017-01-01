@@ -20,5 +20,7 @@ $(document).ready(function(){
       $("#createForm").unbind('submit').submit();
     }
   });
-  console.log("this is new");
+  $("#editBtn").click(function(){
+    $("#edited").val("1");
+  });
 });

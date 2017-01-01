@@ -27,7 +27,7 @@ session_start();
                     $date = $row [0];
                     $title = $row[1];
                     $id = $row[2];
-                    echo "<a href='edit.php?".$id."' class='list-group-item'>";
+                    echo "<a href='edit.php?pid=".$id."' class='list-group-item'>";
                     echo "<span class='badge'>".$date."</span>".$title;
                     echo "</a>";
                   }
