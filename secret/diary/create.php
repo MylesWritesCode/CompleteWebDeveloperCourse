@@ -18,7 +18,7 @@ if (empty($title) || empty($secret)) {
   // alert please fill out data
 } else {
   // $query = insert data into table `secrets`
-  $query = "INSERT INTO `secrets` (`user_id`, `date`, `title`, `secret`) VALUES('$userId', '$date', '$title', '$secret')";
+  $query = "INSERT INTO `secrets` (`user_id`, `date`, `title`, `secret`, `date_updated`) VALUES('$userId', '$date', '$title', '$secret', '$date')";
   // Insert into `secrets` values
   mysqli_query($link, $query);
   $message = "$('#alerts').removeClass('alert-info alert-error').addClass('alert-success').html('Your secret is safe with us!');";

@@ -21,14 +21,16 @@ session_start();
                 // Start bringing up posts the user created
                 $userId = $_SESSION['id'];
                 // Query db for all posts created by user
-                $query = "SELECT `date`, `title`, `id` FROM `secrets` WHERE `user_id` ='".$userId."'";
+                $query = "SELECT `date`, `title`, `id`, `date_updated` FROM `secrets` WHERE `user_id` ='".$userId."'";
                 if ($result = mysqli_query($link, $query)) {
                   while ($row = mysqli_fetch_row($result)) {
                     $date = $row [0];
                     $title = $row[1];
                     $id = $row[2];
+                    $dUpdate = $row[3];
                     echo "<a href='edit.php?pid=".$id."' class='list-group-item'>";
-                    echo "<span class='badge'>".$date."</span>".$title;
+                    echo "<span class='badge'>Created: ".$date."</span>".$title;
+                    echo "<span class='badge'>Updated: ".$dUpdate."</span>";
                     echo "</a>";
                   }
                 }
