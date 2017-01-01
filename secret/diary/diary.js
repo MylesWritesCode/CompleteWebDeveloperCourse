@@ -19,8 +19,6 @@ $(document).ready(function(){
     } else {
       $("#createForm").unbind('submit').submit();
     }
-  });
-  $("#editBtn").click(function(){
-    $("#edited").val("1");
+
   });
 });
