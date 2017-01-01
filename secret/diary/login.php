@@ -34,7 +34,7 @@ if (!empty($email) && !empty($password)) {
     // verify password and if the password is verified
     if (password_verify($password, $hashPass)) {
       // display logged in message
-      $message = "$('#alerts').removeClass('alert-warning alert-error alert-info').addClass('alert-success').html('Logged In!');";
+      $message = "$('#alerts').removeClass('alert-warning alert-danger alert-info').addClass('alert-success').html('Logged In!');";
       // create session
       $_SESSION['id'] = $row['id'];
       echo $_SESSION['id'];
@@ -45,16 +45,16 @@ if (!empty($email) && !empty($password)) {
     // if the password doesn't match
     } else {
       // display message that this is the wrong password
-      $message = "$('#alerts').removeClass('alert-warning alert-info alert-success').addClass('alert-error').html('Wrong Password');";
+      $message = "$('#alerts').removeClass('alert-warning alert-info alert-success').addClass('alert-danger').html('Wrong Password');";
     }
   // if $query didn't return any results
   } else {
     // display message that they need to make an account
     echo "Make an account.";
-    $message = "$('#alerts').removeClass('alert-warning alert-info alert-success').addClass('alert-error').html('This email address is not registered');";
+    $message = "$('#alerts').removeClass('alert-warning alert-info alert-success').addClass('alert-danger').html('This email address is not registered. Sign up below!');";
   }
 } else {
-  $message = "$('#alerts').removeClass('alert-warning alert-error alert-success').addClass('alert-info').html('Enter your info to log in!');";
+  $message = "$('#alerts').removeClass('alert-warning alert-danger alert-success').addClass('alert-info').html('Enter your info to log in!');";
 }
 ?>
 <!DOCTYPE html>
