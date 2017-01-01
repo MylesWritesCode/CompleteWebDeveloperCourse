@@ -9,6 +9,7 @@
     <?php
       $cityDisplay = empty($_GET["cityName"]) ? "" : $_GET["cityName"];
       $errorMessage = "";
+      $message = "";
     ?>
   </head>
   <body>
@@ -38,42 +39,32 @@
             <button class="btn btn-primary btn-lg center-block">Submit</button>
           </form>
           <?php
-            // Get city name and pull page from weather-forcast.com
-            $city = str_replace(' ', '', $cityDisplay);
-            // Get data from cityName ($_GET["cityName"])
-            $file_headers = @get_headers("http://www.weather-forecast.com/locations/$city/forecasts/latest");
-            if ($file_headers[0] == "HTTP/1.1 404 Not Found") {
-              $errorMessage = "That city could not be found.";
-            } else {
-              if ($city) {
-                $forecastPage = file_get_contents("http://www.weather-forecast.com/locations/$city/forecasts/latest");
-                $pageArray = explode('3 Day Weather Forecast Summary:</b><span class="read-more-small"><span class="read-more-content"> <span class="phrase">', $forecastPage);
-                $summaryArray = explode('</span></span></span>', $pageArray[1]);
+              if ($_GET['cityName']) {
+                $cityCall = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=".urlencode($cityDisplay)."&appid=4191b2734e9e19f38fbc139cbbb58f38");
+                $forecastArray = json_decode($cityCall, true);
+                $message = "Description: ".$forecastArray['weather'][0]['description'];
+                $tempInCelcius = "Temp: ".$forecastArray['main']['temp'];
               }
-            }
-            // Make sure string is a city name
-            // Run through weather scraper api?
-            // call id weatherDescriptor and echo html to the div
           ?>
           <div class="alert text-center" name="weatherDescription" id="weatherDescription">
             <!-- Placeholder for code that describes weather conditions -->
             <?php
               // Add or remove class based on if there's data in $summaryArray
               // Also, displays $summaryArray
-              if ($cityDisplay) {
-                $summaryArray = empty($summaryArray) ? "" : $summaryArray[0];
-                if ($summaryArray) {
+              if ($forecastArray['cod'] == 200) {
+                if ($forecastArray) {
                   echo '<script type="text/javascript">';
                   echo '$("#weatherDescription").addClass("alert-info");';
                   echo '</script>';
-                  echo $summaryArray;
-                } elseif ($errorMessage) {
-                  echo '<script type="text/javascript">';
-                  echo '$("#weatherDescription").removeClass("alert-info");';
-                  echo '$("#weatherDescription").addClass("alert-danger");';
-                  echo '</script>';
-                  echo $errorMessage;
+                  echo $message."<br>";
+                  echo $tempInCelcius."<br>";
                 }
+              } else {
+                echo '<script type="text/javascript">';
+                echo '$("#weatherDescription").removeClass("alert-info");';
+                echo '$("#weatherDescription").addClass("alert-danger");';
+                echo '</script>';
+                echo "Could not find that city. Please try again.";
               }
             ?>
           </div>
