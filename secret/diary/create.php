@@ -7,19 +7,12 @@ if (array_key_exists("id", $_SESSION)) {
   header("Location: login.php");
 }
 
-if (!array_key_exists("id", $_SESSION)) {
-  header("Location: login.php");
-}
 // define user_id, date, title, and secret
 $userId = mysqli_real_escape_string($link, $_SESSION['id']);
 $date = mysqli_real_escape_string($link, date("m.d.y"));
 $title = mysqli_real_escape_string($link, empty($_POST['title'])? "" : $_POST['title']);
 $secret = mysqli_real_escape_string($link, empty($_POST['secret'])? "" : $_POST['secret']);
 $message = "";
-echo $userId."<br>";
-echo $date."<br>";
-echo $title."<br>";
-echo $secret."<br>";
 // If $title and $secret are empty
 if (empty($title) || empty($secret)) {
   // alert please fill out data
