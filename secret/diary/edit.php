@@ -4,10 +4,8 @@ session_start();
 $message = "";
 $postId = $_GET['pid'];
 $userId = $_SESSION['id'];
-$editTitle = mysqli_real_escape_string($link, $_POST['title']);
-echo $editTitle;
-$editSecret = mysqli_real_escape_string($link, $_POST['secret']);
-echo $editSecret;
+$editTitle = mysqli_real_escape_string($link, empty($_POST['title'])? "" : $_POST['title'] );
+$editSecret = mysqli_real_escape_string($link, empty($_POST['secret'])? "" : $_POST['secret']);
 $query = "SELECT `user_id` FROM `secrets` WHERE `id` = '".$postId."'";
 if ($result = mysqli_query($link, $query)) {
   $row = mysqli_fetch_row($result);
@@ -20,6 +18,15 @@ if ($result = mysqli_query($link, $query)) {
       $title = $row[0];
       $secret = $row[1];
       // Add code to check if button was pushed, and update values after.
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $query = "UPDATE `secrets` SET `title` = '$editTitle', `secret` = '$editSecret' where `id` = '".$postId."'";
+        mysqli_query($link, $query);
+        mysqli_close();
+        header("Location: edit.php?pid=".$postId);
+        if (isset($_POST['editBtn'])) {
+          echo "Button was pushed.";
+        }
+      }
     }
   } else {
     mysqli_close();
@@ -68,7 +75,7 @@ if (!empty($title) || !empty($secret)) {
             </div>
             <br>
             <input type="hidden" value="0" name="edited" id="edited">
-            <button class="btn btn-primary btn-block btn-lg" name="btnEdit">Submit Edit</button>
+            <button class="btn btn-primary btn-block btn-lg" name="editBtn" id="editBtn">Submit Edit</button>
           </form>
         </div> <!-- col-md-6 col-md-offset-3 -->
       </div> <!-- row -->

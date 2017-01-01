@@ -19,6 +19,5 @@ $(document).ready(function(){
     } else {
       $("#createForm").unbind('submit').submit();
     }
-
   });
 });
