@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+    <title>Code Player Project</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top center">
+      <div class="container-fluid">
+        <div class="row">
+          <h3 class="navbar-text absolute">#CodePlayer</h3>
+          <div class="navbar-inner">
+            <div class="btn-group nav navbar-nav" role="group">
+              <button type="button" class="btn btn-default navbar-btn highlightedButton" id="html">HTML</button>
+              <button type="button" class="btn btn-default navbar-btn" id="css">CSS</button>
+              <button type="button" class="btn btn-default navbar-btn" id="javascript">JavaScript</button>
+              <button type="button" class="btn btn-default navbar-btn highlightedButton" id="output">Output</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row text-area-margin">
+        <!-- <div> -->
+          <textarea id="htmlPanel" class="panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+          <textarea id="cssPanel" class="panel hidden">p { color: green; }</textarea>
+          <textarea id="javascriptPanel" class="panel hidden">alert("test");</textarea>
+        <!-- </div> -->
+        <iframe id="outputPanel" class="panel"></iframe>
+        <div>
+          <!-- Render html here -->
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="scripts.js"></script>
+  </body>
+</html>
