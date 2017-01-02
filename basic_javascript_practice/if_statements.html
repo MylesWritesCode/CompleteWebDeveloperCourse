@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>If Statements</title>
+  </head>
+  <body>
+    <!-- text box -->
+    <input type="text" id="textBox">
+    <!-- submit button -->
+    <button id="btnSubmit">Submit Password</button>
+
+    <script type="text/javascript">
+
+      var x = 2;
+      if (x == 1){
+        console.log("x is equal to one");
+      } else {
+        console.log("x is not 1");
+      };
+
+      submitBtn = document.getElementById("btnSubmit");
+      // button on click
+      submitBtn.onclick = function() {
+        // These need to be in the function scope, won't work outside the funtion
+        var password = "asdf";
+        var checkValue = document.getElementById("textBox").value;
+
+        // if value = password
+        if (password == checkValue) {
+          // alert you got it right
+          alert("Welcome!");
+        } else {
+          // you got it wrong
+          alert("You used the wrong password.");
+        };
+      };
+
+    </script>
+  </body>
+</html>

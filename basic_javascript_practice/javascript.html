@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>#</title>
+  </head>
+  <body>
+    <h1 id="aloha-terra">Aloha, Terra!</h1>
+    <button id="submit-btn">Submit</button>
+    <p id="paragraph">Javascript is ...</p>
+    <button id="change-btn">Change Paragraph</button>
+    <p id="hidden"></p>
+    <button id="show-btn">Show Text</button>
+    <p id="styledText">This text need styles.</p>
+    <button id="styledBtn">Style Text</button>
+    <script type="text/javascript">
+      // document.getElementById("aloha-terra").innerHTML = "Aloha, Myles.";
+
+      document.getElementById("submit-btn").onclick = function() {
+        // alert("Button clicked!");
+        document.getElementById("submit-btn").innerHTML = "Changed!";
+        document.getElementById("aloha-terra").innerHTML = "Aloha, Myles.";
+      };
+      changeBtn = document.getElementById("change-btn");
+      paragraph = document.getElementById("paragraph");
+      changeBtn.onclick = function () {
+        // This is the same as append, but append is cleaner.
+        paragraph.innerHTML = paragraph.innerHTML + (" a little hard.");
+      };
+      show = document.getElementById("show-btn");
+      show.onclick = function () {
+        document.getElementById("hidden").append("Now I'm visible");
+      };
+      styleBtn = document.getElementById("styledBtn")
+      styleText = document.getElementById("styledText")
+      styleBtn.onclick = function() {
+        styleText.style.color = "red";
+        styleText.style.fontSize = "200%";
+        styleText.style.display = "none";
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arrays</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      var myArray = new Array();
+      myArray[0] = "pizza";
+      myArray[1] = "chocolate";
+
+      // Alert for test
+      // alert(myArray[0]);
+
+      // Console log of full array
+      // console.log(myArray);
+
+      // Same as var tweets = new Array();
+      // var tweets = [];
+
+      // Adding items to an array from creation
+      var tweets = ["Morning everybody!", "I love coffee!"]
+      alert(tweets[1]);
+
+      // Add items to array at the end
+      tweets.push ("Back to work!");
+      console.log(tweets);
+
+      // Deletes item 1 from array, and 2 items starting with the first.
+      tweets.splice (1, 2);
+      console.log(tweets);
+
+      // Adds an entry after item 1, doesn't delete anything, with the following data
+      tweets.splice(1, 0, "Cornflakes for breakfast!")
+      console.log(tweets);
+
+      // Replaces item with the following data
+      tweets.splice(1, 1, "Num Num");
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Variables</title>
+  </head>
+  <body>
+    <!-- Commented out the form, because if it's in a form the site auto refreshes. -->
+    <!-- <form> -->
+      <input type="text" id="inputText">
+      <button id="changeBtn">Change The Text</button>
+      <p id="para">This is some text</p>
+    <!-- </form> -->
+    <script type="text/javascript">
+      textBox = document.getElementById("inputText");
+      btnChange = document.getElementById("changeBtn");
+      paragraph = document.getElementById("para");
+
+      btnChange.onclick = function() {
+        // alert("text");
+        var textEntered = "";
+        textEntered = textBox.value;
+        paragraph.innerHTML = textEntered;
+      };
+
+    </script>
+  </body>
+</html>

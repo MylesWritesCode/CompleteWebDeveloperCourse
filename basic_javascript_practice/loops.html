@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loops</title>
+  </head>
+  <body>
+    <h3>Let the computer guess your number between 1 and 5!</h3>
+    <input type="text" id="numberGuess">
+    <button id="submitBtn">Submit</button>
+    <script type="text/javascript">
+  /*  for loop that sets a temp variable of i then it keeps going until i reaches 5
+      and it adds 1 to i every time it loops around the syntax is separated by a semicolon, and you put the temp variable first, followed by when it will break (as
+      long as i is less than 5) followed by what the loop will do once it's run once.
+
+      for (var i = 0; i < 5; i++){
+        console.log(i);
+      };
+  */
+      // define an array of tweets
+      var tweets = ["a", "b", "c", "d", "e", "end for loops"]
+      // for loop that checks the length of the array tweets, then outputs each value
+      for (var i = 0; i < tweets.length; i++){
+        console.log(tweets[i]);
+      };
+
+  /*  while loops are a little different. you set the variable i on the outside,
+      use the keyword while and the only parameter is what needs to be true for this
+      loop to continue (i must be less than the length of the tweets array). as long
+      as this condition is met, it will run the code block. this is why we need to
+      increment i at the end of the code block (otherwise it would run forever)
+  */
+      var tweets = ["a", "b", "c", "d", "e", "end while loops"]
+      var i = 0;
+
+      while(i < tweets.length) {
+          console.log(tweets[i]);
+          i++;
+      };
+
+      button = document.getElementById("submitBtn")
+      button.onclick = function() {
+        var userNumber = document.getElementById("numberGuess").value
+        if (userNumber <= 5) {
+          // alert("This number is less than or equal to 5.");
+          var gotIt = false;
+          var numberOfGuesses = 1;
+          while (gotIt == false) {
+            compNumber = Math.floor((Math.random() * 5) + 1);
+            if (userNumber == compNumber) {
+              gotIt = true;
+              alert("The computer guessed it in " + numberOfGuesses + " tries!");
+              console.log(compNumber);
+            } else {
+              numberOfGuesses++;
+              console.log(compNumber);
+            };
+          };
+        } else {
+          alert("Pick a smaller number!");
+        };
+      };
+    </script>
+  </body>
+</html>

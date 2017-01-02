@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guess The Number</title>
+  </head>
+  <body>
+    <h3>Guess a number between 1 and 10</h3>
+    <input type="text" id="textBox">
+    <button id="guessTheNumber">Guess</button>
+    <script type="text/javascript">
+      submitBtn = document.getElementById("guessTheNumber")
+
+      var numToGuess = Math.floor((Math.random() * 10) + 1);
+      console.log(numToGuess);
+
+      submitBtn.onclick = function(){
+        // pull number from text box
+        var numBox = document.getElementById("textBox").value
+        // define a number
+
+        if (numToGuess == numBox) {
+          alert("You got it right!");
+        } else {
+          alert("You got it wrong!");
+        };
+
+        // check if number is the same
+        // alert "You got it right!"
+        // else
+        // alert "You got it wrong!"
+
+      };
+    </script>
+  </body>
+</html>
