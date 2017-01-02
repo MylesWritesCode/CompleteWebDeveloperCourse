@@ -1,0 +1,3 @@
+Building upon skills learned from other web development courses (basic bootstrap, jquery, and ruby) I'm going to be building a series of websites provided by this course. I'm going to be focusing more on the Python, PHP and SQL given in this course, since it's something I haven't tackled yet.
+
+In addition to the new languages, I'd like to have more time and practice with jQuery and JS, because other classes I've taken on them have been more of a "copy what I code" lesson rather than applying critical thinking skills. As such, all of these projects were created without looking at the code supplied by the instructor, but cleaned up along with him.

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>HTML5 &amp; CSS3</title>
+    <style>
+      a {
+        text-decoration: none;
+      }
+    </style>
+    <header><h1>Raremoon Games</h1></header>
+  </head>
+  <body>
+    <form id="thisForm" action="processform.php">
+      <!-- Placeholder is new in HTML 3 -->
+      <p><input type="text" placeholder="Insert Name Here"></p>
+      <!-- Autofocus makes the cursor automatically go to a certain input -->
+      <p><input type="text" placeholder="Autofocused" autofocus="autofocus"></p>
+      <!-- Turn autocomplete off if you need it for security on certain form fields -->
+      <p><input type="text" autocomplete="off"></p>
+      <!-- Required makes it so that you can't submit the form without filling it out -->
+      <p><input type="text" required></p>
+      <!-- Using the pattern tag, we can specify what is needed in input -->
+      <p><input type="text" pattern="[0-9]"></p>
+      <!-- We can set up autocomplete in our forms pulling from a datalist -->
+      <p><input type="text" list="food"></p>
+      <!-- And declare the datalist as follows -->
+      <datalist id="food">
+        <option value="Pizza">Pizza</option>
+        <option value="Ice Cream">Ice Cream</option>
+        <option value="Apples">Apples</option>
+        <option value="Chicken">Chicken</option>
+        <option value="Chocolate">Chocolate</option>
+      </datalist>
+      <!-- Multiple file upload -->
+      <p><input type="file" multiple></p>
+      <!-- And two buttons with different form actions. You can also set the buttons to have different methods if you need to have a GET for one and POST for another. -->
+      <p><input type="submit" value="Submit" formaction="processform2.php"></p>
+      <p><input type="submit" value="Delete" formaction="delete.php"></p>
+    </form>
+    <p>Code outside form: <input form="thisForm" type="text"></p>
+    <div id="side-menu">
+      <h2>Contents</h2>
+      <nav>
+        <ul>
+          <li><a href="https://www.google.ca/">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>
