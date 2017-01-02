@@ -1,0 +1,19 @@
+.sign-up-form {
+  margin-top: 30px;
+}
+
+.addon-width {
+  width: 160px;
+}
+
+.input-group-lg {
+  width: 100%;
+}
+
+.red-text {
+  color: rgb(159, 21, 62);
+}
+
+.hidden {
+  display: none;
+}
