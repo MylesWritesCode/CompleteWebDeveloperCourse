@@ -1,0 +1,21 @@
+.navbar .navbar-default {
+  margin: 0px;
+  padding: 0px;
+}
+
+#navbar {
+  margin: 0px;
+  padding: 0px;
+}
+
+.jumbotron {
+  background-image: url("jumbotron-sunset.png");
+  background-repeat: no-repeat;
+  background-size: 1920px 1080px;
+  background-blend-mode: soft-light;
+  background-position: left bottom;
+}
+
+.textBodytext {
+  height: 700px;
+}
