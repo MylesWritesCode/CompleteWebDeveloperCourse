@@ -24,7 +24,12 @@ $(document).ready(function(){
       url: "actions.php?action=loginSignUp",
       data: "email=" + $("#email").val() + "&password=" + $("#password").val() + "&loginActive=" + $("#logInToggleHidden").val(),
       success: function(result) {
-        $("#alerts").html(result);
+        if (result == "1") {
+          // Good login/signup
+          window.location.assign("index.php");
+        } else {
+          $("#alerts").addClass("alert-danger").html(result);
+        }
       }
     })
   });

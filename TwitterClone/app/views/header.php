@@ -35,7 +35,6 @@
             <li><a href="?page=profiles">Profiles</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Sign Up</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -47,7 +46,14 @@
               </ul>
             </li>
             <li>
-              <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#logInModal">Log In</button>
+              <?php if (array_key_exists("id", $_SESSION)) { ?>
+                <form method="GET">
+                  <input type="hidden" value="logout" name="function">
+                  <button class="btn btn-primary btn-lg" formmethod="GET" formaction="?function=logout">Log Out</button>
+                </form>
+              <?php } else { ?>
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#logInModal">Log In</button>
+              <?php } ?>
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
