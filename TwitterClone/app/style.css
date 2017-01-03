@@ -1,0 +1,18 @@
+.margin-top-20px {
+  margin-top: 20px;
+}
+
+.time {
+  color: lightgray;
+}
+
+.tweet {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+}
+
+textarea {
+  resize: none;
+}
