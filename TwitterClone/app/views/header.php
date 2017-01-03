@@ -67,6 +67,8 @@
                 <input type="password" class="form-control" placeholder="Password" name="password" id="password">
                 <input type="hidden" value="1" id="logInToggleHidden" name="logInToggleHidden">
               </form>
+              <div class="alert text-center" id="alerts" name="alerts">
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-info" id="togLogIn">Switch to Sign Up Form</button>
@@ -76,30 +78,3 @@
         </div>
       </div>
     </nav>
-
-<script>
-  $("#togLogIn").click(function(){
-    if ($("#logInToggleHidden").val() == 1) {
-      $(this).html("Switch to Log In");
-      $("#logInLabel").html("Sign Up Form");
-      $("#logInToggleHidden").val("0");
-      $("#logInBtn").html("Sign Up");
-    } else {
-      $(this).html("Switch to Sign Up");
-      $("#logInLabel").html("Log In Form");
-      $("#logInToggleHidden").val("1");
-      $("#logInBtn").html("Log In");
-    }
-  });
-
-  $("#logInBtn").click(function(){
-    $.ajax({
-      type: "POST",
-      url: "actions.php?action=loginSignUp",
-      data: "email=" + $("#email").val() + "password=" + $("#password").val() + "&loginActive=" + $("#logInToggleHidden").val(),
-      success: function(result) {
-        alert(result);
-      }
-    })
-  });
-</script>
