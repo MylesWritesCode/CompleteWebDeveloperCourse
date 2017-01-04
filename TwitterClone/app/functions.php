@@ -38,10 +38,11 @@
       $query = "SELECT * FROM `isFollowing` WHERE `follower` = '".mysqli_real_escape_string($link, $_SESSION['id'])."'";
       $result = mysqli_query($link, $query);
       $whereClause = "";
+      $sessionUser = $_SESSION['id'];
       while ($row = mysqli_fetch_assoc($result)) {
         if ($whereClause == "") $whereClause = "WHERE";
         else $whereClause .= "OR";
-        $whereClause .= "`user_id`='".$row['isFollowing']."'";
+        $whereClause .= "`user_id`='".$row['isFollowing']."' OR `user_id`='".$sessionUser."'";
       }
     }
     $query = "SELECT * FROM `tweets` ".$whereClause." ORDER BY `datetime` DESC LIMIT 10";
@@ -57,12 +58,18 @@
         echo "<p>".$user['email']."<span class='time'> - ".timeSince(time() - strtotime($row['datetime']))." ago</span>:</p>";
         echo "<p>".$row['tweet']."</p>";
         echo "<p><a class='toggleFollow' data-userId='".$row['user_id']."'>";
-        $isFollowingQuery = "SELECT * FROM `isFollowing` WHERE `follower` = '".mysqli_real_escape_string($link, $_SESSION['id'])."' AND `isFollowing` = '".mysqli_real_escape_string($link, $row['user_id'])."' LIMIT 1";
-        $isFollowingQueryResult = mysqli_query($link, $isFollowingQuery);
-        if (mysqli_num_rows($isFollowingQueryResult) > 0) {
-          echo "Unfollow";
-        } else {
-          echo "Follow";
+        if (array_key_exists("id", $_SESSION)){
+          if ($_SESSION['id'] != $row['user_id']) {
+            $isFollowingQuery = "SELECT * FROM `isFollowing` WHERE `follower` = '".mysqli_real_escape_string($link, $_SESSION['id'])."' AND `isFollowing` = '".mysqli_real_escape_string($link, $row['user_id'])."' LIMIT 1";
+            $isFollowingQueryResult = mysqli_query($link, $isFollowingQuery);
+            if (mysqli_num_rows($isFollowingQueryResult) > 0) {
+              echo "Unfollow";
+            } else {
+              echo "Follow";
+            }
+          } else {
+            // Link under your own tweets.
+          }
         }
         echo "</a></p></div>";
       }
