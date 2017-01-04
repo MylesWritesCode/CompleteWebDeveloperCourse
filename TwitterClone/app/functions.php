@@ -32,17 +32,21 @@
   // Display Tweets
   function displayTweets($type) {
     global $link;
+    $sessionUser = mysqli_real_escape_string($link, $_SESSION['id']);
+    $whereClause = "";
     if ($type == 'public') {
       $whereClause = "";
     } else if ($type == 'isFollowing') {
-      $query = "SELECT * FROM `isFollowing` WHERE `follower` = '".mysqli_real_escape_string($link, $_SESSION['id'])."'";
+      $query = "SELECT * FROM `isFollowing` WHERE `follower` = '".$sessionUser."'";
       $result = mysqli_query($link, $query);
-      $whereClause = "";
-      $sessionUser = $_SESSION['id'];
       while ($row = mysqli_fetch_assoc($result)) {
         if ($whereClause == "") $whereClause = "WHERE";
         else $whereClause .= "OR";
         $whereClause .= "`user_id`='".$row['isFollowing']."' OR `user_id`='".$sessionUser."'";
+      }
+    } else if ($type == 'userTweets') {
+      if (array_key_exists("id", $_SESSION)) {
+        $whereClause = "WHERE `user_id` = '".$sessionUser."'";
       }
     }
     $query = "SELECT * FROM `tweets` ".$whereClause." ORDER BY `datetime` DESC LIMIT 10";

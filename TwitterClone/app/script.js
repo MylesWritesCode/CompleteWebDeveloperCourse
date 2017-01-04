@@ -57,7 +57,7 @@ $(document).ready(function(){
       url: "actions.php?action=postTweet",
       data: "tweetContent=" + $("#tweetContent").val(),
       success: function(result) {
-        if (result == "1"){
+        if (result == "1") {
           $("#tweetSucess").show();
           $("#tweetFail").hide();
         } else if (result != "") {

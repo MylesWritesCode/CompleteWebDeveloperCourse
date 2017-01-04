@@ -80,8 +80,8 @@
       echo "Your tweet is too long.";
     } else {
       $tweetQuery = "INSERT INTO `tweets` (`user_id`, `tweet`, `datetime`) VALUES ('".$userId."', '".$tweet."', NOW())";
-      echo "1";
       $tweetResult = mysqli_query($link, $tweetQuery);
+      echo "1";
     }
   }
 ?>
