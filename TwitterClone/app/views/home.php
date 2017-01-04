@@ -7,7 +7,11 @@
     <div class="col-md-4">
       <?php displaySearch(); ?>
       <hr>
-      <?php displayTweetBox(); ?>
+      <?php
+        if (array_key_exists("id", $_SESSION)) {
+          displayTweetBox();
+        }
+      ?>
     </div> <!-- col-md-4 -->
   </div> <!-- row -->
 </div> <!-- container-fluid -->
