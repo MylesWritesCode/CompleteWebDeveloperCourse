@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <div class="row margin-top-20px">
     <div class="col-md-6 col-md-offset-2">
-      <h2>Your Timeline</h2>
-      <?php displayTweets('userTweets'); ?>
-    </div> <!-- col-md-8 -->
+      <h2>Tweet Search</h2>
+      <?php displayTweets('searchTweets'); ?>
+    </div> <!-- col-md-6 col-md-offset-2 -->
     <div class="col-md-2">
       <?php displaySearch(); ?>
       <hr>

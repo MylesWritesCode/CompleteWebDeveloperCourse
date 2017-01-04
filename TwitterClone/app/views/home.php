@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="row margin-top-20px">
-    <div class="col-md-8">
+    <div class="col-md-6 col-md-offset-2">
       <h2>Recent Tweets</h2>
       <?php displayTweets('public'); ?>
-    </div> <!-- col-md-8 -->
-    <div class="col-md-4">
+    </div> <!-- col-md-6 col-md-offset-2 -->
+    <div class="col-md-2">
       <?php displaySearch(); ?>
       <hr>
       <?php

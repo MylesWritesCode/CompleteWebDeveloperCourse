@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="row margin-top-20px">
-    <div class="col-md-8">
+    <div class="col-md-6 col-md-offset-2">
       <h2>Your Timeline</h2>
       <?php displayTweets('isFollowing'); ?>
     </div> <!-- col-md-8 -->
-    <div class="col-md-4">
+    <div class="col-md-2">
       <?php displaySearch(); ?>
       <hr>
       <?php

@@ -8,7 +8,7 @@
       header("Location: index.php");
     }
   }
-
+  // Show arbitrary text based on time passed since last tweet.
   function timeSince($since) {
     $chunks = array(
       array(60 * 60 * 24 * 365, 'year'),
@@ -29,26 +29,60 @@
     $print = ($count == 1) ? '1 '.$name : "$count {$name}s";
     return $print;
   }
+  // END function timeSince
   // Display Tweets
   function displayTweets($type) {
     global $link;
-    $sessionUser = mysqli_real_escape_string($link, $_SESSION['id']);
+    // Check if array key exists, then set $sessionUser
+    if (array_key_exists("id", $_SESSION)){
+      $sessionUser = mysqli_real_escape_string($link, $_SESSION['id']);
+    }
     $whereClause = "";
+    // START 'public' type
     if ($type == 'public') {
-      $whereClause = "";
+    // END 'public' type
+    // START 'isFollowing' type
     } else if ($type == 'isFollowing') {
       $query = "SELECT * FROM `isFollowing` WHERE `follower` = '".$sessionUser."'";
       $result = mysqli_query($link, $query);
-      while ($row = mysqli_fetch_assoc($result)) {
-        if ($whereClause == "") $whereClause = "WHERE";
-        else $whereClause .= "OR";
-        $whereClause .= "`user_id`='".$row['isFollowing']."' OR `user_id`='".$sessionUser."'";
+      // Only if there are more than 0 rows in query
+      if (mysqli_num_rows($result) > 0) {
+        // While there are rows, attach a where clause to our query below
+        while ($row = mysqli_fetch_assoc($result)) {
+          if (empty($whereClause)) {
+            $whereClause = "WHERE";
+          } else {
+            $whereClause .= "OR";
+          }
+          $whereClause .= "`user_id`='".$row['isFollowing']."' OR `user_id`='".$sessionUser."'";
+        }
+      } else  if (mysqli_num_rows($result) <= 0 ) {
+        $whereClause = "WHERE `user_id` = '".$sessionUser."'";
       }
+    // END 'isFollowing' type
+    // START 'userTweets' type
     } else if ($type == 'userTweets') {
       if (array_key_exists("id", $_SESSION)) {
         $whereClause = "WHERE `user_id` = '".$sessionUser."'";
       }
+      // END 'userTweets' type
+      // START 'searchTweets' type
+    } else if ($type == 'searchTweets') {
+      if (array_key_exists("q", $_GET)) {
+        $searchTerm = mysqli_real_escape_string($link, $_GET['q']);
+      }
+      echo "<p>Showing results for ".$searchTerm." below:";
+      $whereClause = "WHERE `tweet` LIKE '%".$searchTerm."%'";
+    // END 'searchTweets' type
+    // START profileSEARCH type
+    } else if (is_numeric($type)) {
+      if (array_key_exists('u', $_GET)) {
+        $profileUser = mysqli_real_escape_string($link, $_GET['u']);
+      }
+      $whereClause = "WHERE `user_id` = '".$profileUser."'";
     }
+    // END 'searchTweets' type
+    // Main query for displaying tweets
     $query = "SELECT * FROM `tweets` ".$whereClause." ORDER BY `datetime` DESC LIMIT 10";
     $result = mysqli_query($link, $query);
     if (mysqli_num_rows($result) == 0) {
@@ -79,14 +113,17 @@
       }
     }
   }
+  // end function displayTweets
 
   // Display Search
   function displaySearch() {
-    echo "<div class='form-group form-inline'>
-            <input type='text' placeholder='Search Tweets' class='form-control'>
-            <button class='btn btn-primary'>SEARCH</button>
-          </div>";
+    echo "<form class='form-group form-inline'>
+            <input type='hidden' name='page' value='search'>
+            <input type='text' name='q' placeholder='Search Tweets' class='form-control'>
+            <button class='btn btn-primary' type='submit'>SEARCH</button>
+          </form>";
   }
+  // END function displaySearch
 
   // Display Post Tweet
   function displayTweetBox() {
@@ -100,5 +137,16 @@
             <br>
             <button class='btn btn-primary btn-block' id='postTweetBtn'>POST TWEET</button>
           </div>";
+  }
+  // END function displayTweetBox
+
+  // Display Users
+  function displayUsers() {
+    global $link;
+    $displayUsersQuery = "SELECT * FROM `users` LIMIT 10";
+    $displayUsersQueryResult = mysqli_query($link, $displayUsersQuery);
+    while ($row = mysqli_fetch_assoc($displayUsersQueryResult)) {
+      echo "<p><a href='?page=profiles&u=".$row['id']."'>".$row['email']."</p><br>";
+    }
   }
 ?>

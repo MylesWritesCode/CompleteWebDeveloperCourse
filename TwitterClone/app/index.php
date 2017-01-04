@@ -6,6 +6,10 @@
       include "views/timeline.php";
     } else if ($_GET['page'] == 'tweets') {
       include "views/tweets.php";
+    } else if ($_GET['page'] == 'profiles') {
+      include "views/profile.php";
+    } else if ($_GET['page'] == 'search') {
+      include "views/search.php";
     }
   } else {
     include "views/home.php";
