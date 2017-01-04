@@ -16,7 +16,6 @@ $(document).ready(function(){
       $("#logInBtn").html("Log In");
     }
   });
-
   // Ajax to send POST to actions.php
   $("#logInBtn").click(function(){
     $.ajax({
@@ -29,6 +28,24 @@ $(document).ready(function(){
           window.location.assign("index.php");
         } else {
           $("#alerts").addClass("alert-danger").html(result);
+        }
+      }
+    })
+  });
+  // Toggle follow/unfollow
+  $(".toggleFollow").click(function(){
+    var id = $(this).attr("data-userId");
+    $.ajax({
+      type: "POST",
+      url: "actions.php?action=toggleFollow",
+      data: "userId=" + $(this).attr("data-userId"),
+      success: function(result) {
+        if (result == "1") {
+          // Unfollowed
+          $("a[data-userId='" + id + "']").html("Follow");
+        } else if (result == "2"){
+          // Followed
+          $("a[data-userId='" + id + "']").html("Unfollow");
         }
       }
     })

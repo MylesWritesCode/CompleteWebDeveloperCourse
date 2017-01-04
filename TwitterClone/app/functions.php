@@ -50,7 +50,7 @@
         echo "<div class='tweet'>";
         echo "<p>".$user['email']."<span class='time'> - ".timeSince(time() - strtotime($row['datetime']))." ago</span>:</p>";
         echo "<p>".$row['tweet']."</p>";
-        echo "<p>Follow</p>";
+        echo "<p><a class='toggleFollow' data-userId='".$row['user_id']."'>Follow</a></p>";
         echo "</div>";
       }
     }
