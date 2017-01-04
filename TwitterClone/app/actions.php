@@ -69,4 +69,19 @@
       echo "2";
     }
   }
+
+  // Post Tweet action
+  if ($_GET['action'] == 'postTweet') {
+    $tweet = mysqli_real_escape_string($link, $_POST['tweetContent']);
+    $userId = mysqli_real_escape_string($link, $_SESSION['id']);
+    if (!$tweet) {
+      echo "Your tweet is empty.";
+    } else if (strlen($tweet) > 140){
+      echo "Your tweet is too long.";
+    } else {
+      $tweetQuery = "INSERT INTO `tweets` (`user_id`, `tweet`, `datetime`) VALUES ('".$userId."', '".$tweet."', NOW())";
+      echo "1";
+      $tweetResult = mysqli_query($link, $tweetQuery);
+    }
+  }
 ?>

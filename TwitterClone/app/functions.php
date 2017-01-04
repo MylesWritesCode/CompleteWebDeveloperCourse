@@ -79,10 +79,15 @@
 
   // Display Post Tweet
   function displayTweetBox() {
-    echo "<form method='POST'>
-            <textarea class='form-control' rows='6'></textarea>
+    echo "<div id='tweetSuccess' class='alert alert-success'>
+            Your tweet was posted successfully.
+          </div>
+          <div id='tweetFail' class='alert alert-danger'>
+          </div>
+          <div class='form-group'>
+            <textarea class='form-control' rows='6' id='tweetContent'></textarea>
             <br>
-            <button class='btn btn-primary btn-block'>POST TWEET</button>
-          </form>";
+            <button class='btn btn-primary btn-block' id='postTweetBtn'>POST TWEET</button>
+          </div>";
   }
 ?>

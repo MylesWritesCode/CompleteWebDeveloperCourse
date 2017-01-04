@@ -50,7 +50,30 @@ $(document).ready(function(){
       }
     })
   });
-  // On enter, clicks #loginBtn
+  // Posts tweet to SQL server
+  $("#postTweetBtn").click(function(){
+    $.ajax({
+      type: "POST",
+      url: "actions.php?action=postTweet",
+      data: "tweetContent=" + $("#tweetContent").val(),
+      success: function(result) {
+        if (result == "1"){
+          $("#tweetSucess").show();
+          $("#tweetFail").hide();
+        } else if (result != "") {
+          $("#tweetFail").show().html(result);
+          $("#tweetSuccess").hide();
+        }
+      }
+    })
+  });
+  // Submit tweet on ENTER keypress
+  $("#tweetContent").keypress(function(event){
+    if (event.keyCode == 13) {
+      $("#postTweetBtn").click();
+    }
+  });
+  // Login on ENTER keypress while in password form.
   $("#password").keypress(function(event){
     if(event.keyCode == 13){
       $('#logInBtn').click();
