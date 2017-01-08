@@ -8,7 +8,9 @@ There are a couple of demo websites up that are hosted by Eco Web Hosting, as it
 
 
 [Weather Scraper](http://176.32.230.7/cwdcmyles.com/WeatherScraper/)
+
 [Secret Diary](http://176.32.230.7/cwdcmyles.com/secret/diary/)
+
 [Twitter Clone](http://176.32.230.7/cwdcmyles.com/TwitterClone/)
 
 
