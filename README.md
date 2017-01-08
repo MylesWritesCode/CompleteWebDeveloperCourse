@@ -6,11 +6,11 @@ In addition to the new languages, I'd like to have more time and practice with j
 ## Demo websites
 There are a couple of demo websites up that are hosted by Eco Web Hosting, as it comes with the Complete Web Developer Course (thanks Rob!). Here's a list of them. I'm most proud of the secret diary, since on that one I tackled it primarily myself without looking at any of the code Rob used before completing the video.
 
-```
+
 [Weather Scraper](http://176.32.230.7/cwdcmyles.com/WeatherScraper/)
 [Secret Diary](http://176.32.230.7/cwdcmyles.com/secret/diary/)
 [Twitter Clone](http://176.32.230.7/cwdcmyles.com/TwitterClone/)
-```
+
 
 ## Merging of all Repositories
 I've created a bunch of repositories to follow my work throughout this course, but feel that it's getting ridiculous to have multiple repos for the same class. I merged them by creating a new repo and adding remotes, then merging them and committing them to master. So that I don't have to look around if I need to do this again, the following code is needed to compile many repositories into a single repo.
