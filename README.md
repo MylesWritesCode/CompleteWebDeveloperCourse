@@ -32,7 +32,7 @@ git merge -s ours --no-commit --allow-unrelated-histories oldRepoName/master
 git read-tree --prefix=SubdirectoryYouWant/ -u oldRepoName/master
 git commit -m "Merging OldRepoName into master"
 ```
-Finally, it's okay to delete the old repositories and you'll still have the same history with your new repo (as evidenced in this one).
+Finally, it's okay to delete the old repositories and you'll still have the same history with your new repo (as evidenced in this one). Now here is some extra writing just to make sure that my SSH key works on my new desktop.
 
 ## Twitter Clone
 The Twitter clone doesn't look like much, but it was my first attempt at MVC without a framework like Rails. I enjoy Rails so much more than doing it from scratch like I did with this Twitter clone. I will admit though, once the ball got rolling, it got rolling fast. There are definitely some optimizations that I would need to explore should this become a production website, such as making sure that I'm only calling the db if I need the db, refactoring the PHP (this is something I feel needs to be done) and fixing the layout. If I had to tackle this assignment again, I would definitely try to use a preset framework such as CakePHP or Laravel so that I can spend more time making the website look nicer and use best practices with the backend code.
